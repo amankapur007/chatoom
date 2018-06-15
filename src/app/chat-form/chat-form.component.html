@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="input-group">
+    <span class="input-group-addon">Message</span>
+    <input id="msg" type="text" class="form-control" name="msg"
+      [(ngModel)]="message" (keydown)="handleEvent($event)" placeholder="Type message">
+      <div class="input-group-btn">
+      <button class="btn btn-default" (click)="send()">Send</button>
+      </div>
+  </div>
+</div>
