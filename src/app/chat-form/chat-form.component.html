@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid" style="position: fixed;bottom: 0;height: 10%;">
   <div class="input-group">
     <span class="input-group-addon">Message</span>
-    <input id="msg" type="text" class="form-control" name="msg"
-      [(ngModel)]="message" (keydown)="handleEvent($event)" placeholder="Type message">
-      <div class="input-group-btn">
+    <textarea id="msg" type="text" class="form-control" name="msg"
+      [(ngModel)]="message" (keydown)="handleEvent($event)" placeholder="Type message"><textarea></textarea>
+      <div class=" input-group-addon input-group-btn">
       <button class="btn btn-default" (click)="send()">Send</button>
       </div>
   </div>

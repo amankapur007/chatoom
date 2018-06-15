@@ -1,5 +1,14 @@
-<div>
-  <p>{{ messageContent }}</p>
-  <p>{{ userName}}</p>
-  <p>{{ timeStamp}}</p>
+<div style="display: flex;
+border-radius: 4px;   
+width: 100%;border: 1px solid #ccc;margin-bottom: 1%">
+  <div style="background-color: #eee;
+              padding: 6px 12px;   
+              word-wrap: break-word;
+              width: 31%">
+    <span>{{userName}}</span>
+    <br/>
+    <span>{{timeStamp | date:'medium'}}</span>
+  </div>
+  <div style="padding: 6px 12px;word-wrap: break-word;
+  width: 69%">{{messageContent}}</div>
 </div>

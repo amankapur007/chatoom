@@ -1,3 +1,36 @@
-<p>
-  signup-form works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+      <form #signupForm="ngForm">
+        <div class="input-group" style="padding: 1%">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input id="email" type="text" [(ngModel)]="email" class="form-control" name="email" placeholder="Email" required>
+        </div>
+        <div class="input-group" style="padding: 1%">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-lock"></i>
+          </span>
+          <input id="password" type="password" [(ngModel)]="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <div class="input-group" style="padding: 1%">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-book"></i>
+          </span>
+          <input id="msg" type="text" class="form-control" [(ngModel)]="displayName" name="msg" placeholder="Display Name" required>
+        </div>
+
+        <div class="input-group" style="padding: 1%;position: absolute;
+        right: 4%;">
+            <button [disabled]="!signupForm.form.valid" class="btn btn-default"
+             (click)="signUp()" type="submit">Sign up</button>
+          </div>
+      </form>
+
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

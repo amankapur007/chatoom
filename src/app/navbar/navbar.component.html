@@ -4,14 +4,22 @@
       <a class="navbar-brand" href="#">MSGOOM</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a href="#">
+      <li *ngIf="!(user | async)?.uid">
+        <a href="#" routerLink="/signup">
           <span class="glyphicon glyphicon-user"></span> Sign Up</a>
       </li>
-      <li>
-        <a href="#">
+      <li *ngIf="!(user | async)?.uid">
+        <a href="#" (click)="login()">
           <span class="glyphicon glyphicon-log-in"></span> Login</a>
       </li>
+      <li *ngIf="(user | async)?.uid">
+          <a>
+            <span class="glyphicon glyphicon-user"></span> Hello {{userEmail}}!</a>
+        </li>
+      <li *ngIf="(user | async)?.uid">
+          <a href="#" (click)="logout()">
+            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
     </ul>
   </div>
 </nav>

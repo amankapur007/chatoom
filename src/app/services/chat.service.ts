@@ -9,7 +9,7 @@ import { ChatMessage } from '../models/chat-message.model';
 @Injectable()
 export class ChatService {
 
-  user: any;
+  user: firebase.User;
   chatMessages: FirebaseListObservable<ChatMessage[]>;
   chatMessage: ChatMessage;
   username: string;
@@ -22,19 +22,25 @@ export class ChatService {
         if(auth!=undefined && auth!=null){
           this.user = auth;
         }
+
+        this.getUserName().subscribe(a=>{
+          this.username = a.displayName
+       });
+
       })
     }
 
   sendMessage(msg: string){
+    console.log(this.username);
     const timeStamp = this.getTimeStamp();
-   // const email:string = this.user.email;
-    const email:string = 'test@gmail.com';
+    const email:string = this.user.email;
+    //const email:string = 'test@gmail.com';
     this.chatMessages = this.getMessages();
     this.chatMessages.push({
       message:msg,
       timeSent:timeStamp,
-     // userName: this.username,
-      userName: "test",
+      userName: this.username,
+      //userName: "test",
       email:email
     });
     console.log('Called Message')
@@ -54,5 +60,12 @@ export class ChatService {
     const date = now.getUTCFullYear()+"/"+(now.getMonth()+1)+"/"+now.getUTCDate();
     const time = now.getUTCHours()+":"+(now.getUTCMinutes())+":"+now.getUTCSeconds();
     return (date+" "+time);
+  }
+
+  getUserName(){
+    const uid = this.user.uid;
+    const path = `users/${uid}`;
+
+    return this._db.object(path)
   }
 }
