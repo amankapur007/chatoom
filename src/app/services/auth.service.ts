@@ -15,10 +15,10 @@ export class AuthService {
   private authState: any;
 
   constructor(private _router: Router, private _auth: AngularFireAuth, private _db: AngularFireDatabase) {
-    this.user =this._auth.authState;
-   }
+    this.user = this._auth.authState;
+  }
 
-  authUser(){
+  authUser() {
     return this.user;
   }
 
@@ -31,13 +31,21 @@ export class AuthService {
   }
 
   login(email, password) {
-    this._auth.auth.signInWithEmailAndPassword(email, password).then(resolve => {
+    return this._auth.auth.signInWithEmailAndPassword(email, password).then(user => {
+      this.authState = user;
       const status = 'online';
       this.setUserStatus(status);
-      this._router.navigate(['chat']);
     }).catch(error => {
       console.log(error)
     })
+  }
+
+  signOut(user) {
+    this.authState = user;
+    return this._auth.auth.signOut().then(() => {
+      const status = "offline"
+      this.setUserStatus(status);
+    }).catch(error => console.log(error));
   }
 
   setUserData(email: string, displayName: string, status: string) {
@@ -57,7 +65,8 @@ export class AuthService {
   setUserStatus(status: string) {
     const path = `users/${this.currentUserId}`;
     const data = {
-      status: status
+      status: status,
     }
+    this._db.object(path).update(data).catch(error => console.log(error));
   }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar no-bottom-margin navbar-default navbar-static-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">MSGOOM</a>
@@ -9,7 +9,7 @@
           <span class="glyphicon glyphicon-user"></span> Sign Up</a>
       </li>
       <li *ngIf="!(user | async)?.uid">
-        <a href="#" (click)="login()">
+        <a href="#" routerLink="/login">
           <span class="glyphicon glyphicon-log-in"></span> Login</a>
       </li>
       <li *ngIf="(user | async)?.uid">
@@ -17,7 +17,7 @@
             <span class="glyphicon glyphicon-user"></span> Hello {{userEmail}}!</a>
         </li>
       <li *ngIf="(user | async)?.uid">
-          <a href="#" (click)="logout()">
+          <a role="button" (click)="logout()">
             <span class="glyphicon glyphicon-log-out"></span> Logout</a>
         </li>
     </ul>

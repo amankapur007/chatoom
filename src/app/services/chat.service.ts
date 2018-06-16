@@ -68,4 +68,8 @@ export class ChatService {
 
     return this._db.object(path)
   }
+
+  getUsers(){
+    return this._db.list('users');
+  }
 }
