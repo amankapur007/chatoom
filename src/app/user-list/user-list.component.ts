@@ -21,4 +21,12 @@ export class UserListComponent implements OnInit, OnChanges {
   ngOnChanges(){
     this.userList = this._chatService.getUsers();
   }
+
+  status(user: User){
+    if(user.status === 'online'){
+        return {"color":"green"}
+    }else{
+      return {"color":"red"}
+    }
+  }
 }

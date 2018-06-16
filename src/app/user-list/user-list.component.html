@@ -1,5 +1,7 @@
 <div class="container-fluid">
-  <div class="well well-sm margin-top" *ngFor="let user of userList | async">
-    {{user.displayName}} - {{user.status}} 
+  <div class="well well-sm margin-top" style="background-color: #1B4F72; border-color: #1B4F72;
+    color: #EBF5FB; display: flex" *ngFor="let user of userList | async">
+    <span style="flex: 1">{{user.displayName}}</span> 
+    <span><i [ngStyle]="status(user)" class="fa fa-circle "></i></span>
   </div>
 </div>
