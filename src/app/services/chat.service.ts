@@ -63,10 +63,14 @@ export class ChatService {
   }
 
   getUserName(){
+    if(this.user!=undefined){
     const uid = this.user.uid;
     const path = `users/${uid}`;
 
     return this._db.object(path)
+    }else{
+      return null;
+    }
   }
 
   getUsers(){

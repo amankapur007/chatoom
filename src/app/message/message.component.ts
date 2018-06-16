@@ -37,14 +37,14 @@ export class MessageComponent implements OnInit {
       return {"background-color":"#3498DB",
         "padding": "6px 12px",   
         "word-wrap": "break-word",
-        "width": "31%",
+        "width": "21%",
         "color":"white",
       }
     }else{
         return {"background-color":"#eee",
         "padding": "6px 12px",   
         "word-wrap": "break-word",
-        "width": "31%"
+        "width": "21%"
       }
     }
   }
@@ -54,14 +54,14 @@ export class MessageComponent implements OnInit {
     return {
       "padding": "6px 12px",
       "word-wrap": "break-word",
-      "width": "69%",
+      "width": "79%",
       "background-color":"#D6EAF8"
     }
   }else{
     return {
       "padding": "6px 12px",
       "word-wrap": "break-word",
-      "width": "69%"
+      "width": "79%"
     }
   }
   }

@@ -24,9 +24,9 @@ export class UserListComponent implements OnInit, OnChanges {
 
   status(user: User){
     if(user.status === 'online'){
-        return {"color":"green"}
+        return {"color":"#58D68D"}
     }else{
-      return {"color":"red"}
+      return {"color":"#E74C3C"}
     }
   }
 }
