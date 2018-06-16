@@ -32,7 +32,7 @@ export class MessageComponent implements OnInit {
     this.timeStamp = chatMessage.timeSent;
   }
 
-  ownMessage(email: string){
+  ownMessage(){
     if(this.isOwnMessage){
       return {"background-color":"#3498DB",
         "padding": "6px 12px",   
