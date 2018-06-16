@@ -1,0 +1,10 @@
+.feedWrapper {
+    overflow-y: scroll;
+    height: 80vh;
+}
+
+#scroll-style::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
