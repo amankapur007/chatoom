@@ -18,21 +18,32 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this._authService.authUser();
+    var providers=this._authService.authProviders();
     this.user.subscribe(user=>{
       if(user){
-        this.userEmail = user.email;
+        console.log(providers.EmailAuthProvider.PROVIDER_ID);
+        
+        if(user.providerData[0].providerId ==providers.PhoneAuthProvider.PROVIDER_ID){
+          this.userEmail = user.phoneNumber;
+        }else if(user.providerData[0].providerId ==providers.GoogleAuthProvider.PROVIDER_ID){
+          this.userEmail = user.displayName;
+        }else if(user.providerData[0].providerId ==providers.EmailAuthProvider.PROVIDER_ID){
+          this.userEmail = user.email;
+        }else if(user.providerData[0].providerId ==providers.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD){
+          this.userEmail = user.email;
+        }else{
+          this.userEmail = user.email;          
+        }
       }
     })
   }
 
   logout(){
     this.user = this._authService.authUser();
-    this.user.subscribe(user=>{
-      if(user){
-        this._authService.signOut(user).then(()=>{
+      if(this.user){
+        this._authService.signOut(this.user).then(()=>{
           this._router.navigate(['login']);
         });
       }
-    })
     }
 }

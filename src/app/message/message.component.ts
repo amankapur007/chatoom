@@ -17,7 +17,7 @@ export class MessageComponent implements OnInit {
   isOwnMessage:boolean;
   constructor(private _authService:AuthService) { 
     this._authService.authUser().subscribe(user=>{
-      if(user.email === this.userEmail){
+      if(user!=null && user!=undefined && user.email === this.userEmail){
         this.isOwnMessage = true
       }else{
         this.isOwnMessage = false;

@@ -22,6 +22,9 @@ import { routes } from '../routes';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 import { environment } from '../environments/environment';
+import { WindowService } from './services/window.service';
+import { HelperComponent } from './helper/helper.component';
+import { DatabaseService } from './services/database.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { environment } from '../environments/environment';
     SignupFormComponent,
     NavbarComponent,
     UserListComponent,
-    UserItemComponent
+    UserItemComponent,
+    HelperComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService, ChatService],
+  providers: [AuthService, ChatService, WindowService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
