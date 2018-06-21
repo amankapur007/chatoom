@@ -4,7 +4,7 @@
   "license": "ISC",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "pm run build && node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
